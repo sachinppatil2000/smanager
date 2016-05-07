@@ -1,0 +1,25 @@
+{
+    "devices": [
+      	      {
+            "DeviceName": "BFW",
+            "username": "OSBB2B.TMME@TMME",
+            "password": "tars123",
+            "DeviceType" : "vibration",
+            "CurrentStatus" : "on"
+        },
+      		 {
+        "DeviceName": "Bakery",
+        "username": "OSBB2B.TMME@TMME",
+        "password": "tars123",
+        "DeviceType" : "temperature",
+        "CurrentStatus" : "off"
+      },
+      	 {
+        "DeviceName": "bioone",
+        "username": "OSBB2B.TMME@TMME",
+        "password": "tars123",
+        "DeviceType" : "biometric",
+        "CurrentStatus" : "on"
+      }
+    ]
+}

@@ -1,0 +1,9 @@
+var vibrationDriver = require("vibrationDDriver.js")
+device={
+"DeviceName":"BFW",
+"username": "OSBB2B.TMME@TMME",
+            "password": "tars123",
+            "DeviceType" : "vibration",
+            "CurrentStatus" : "on"
+        }
+console.log(vibrationDriver.ProcessDevice(device));

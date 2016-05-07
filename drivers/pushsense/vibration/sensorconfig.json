@@ -1,0 +1,12 @@
+{
+"database":"vibration.db",
+"pin":4,
+"startofDay":8,
+"message":{
+	   "startinterval" :"dummy",
+	   "endinterval" :"dummy",
+	   "currenttime" :"dummy",
+	   "workdone" :"dummy",
+	   "consolidatedwork" :"dummy"
+	}
+}
