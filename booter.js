@@ -3,6 +3,7 @@ var accum = require('./Accumulator.js');
 var https = require('https');
 setInterval(function(){
         // get data from sensors
+        // changes to be commited
         var date = new Date();
         console.log(date.getMinutes());
         // go through list of components and  get current state.
