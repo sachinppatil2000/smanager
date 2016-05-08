@@ -21,19 +21,21 @@ module.exports =
 	pythonOptions:['-u'],
 	scriptPath:'/home/pi/Accumulator/drivers/pushsense/vibration',
 };
-//asyncblock(function(flow){
 
 	pythonshell.defaultOptions = {command:'python'};
                         // Call vibration device driver
-			pythonshell.run('vibrationreporter.py',options,function(err,results){
-			if(err) throw err;
-			console.log(results);
-                      device.CurrentStatus=results[0].status;
-                      return device;
-			});
-                  //    callback(device);
-    //    });
-                        console.log("Vibration device manager to be called");
-  //                      return device;
-    }
-};
+        pyshell=new pythonshell('vibrationreporter.py',options);
+        pyshell.stdout.on('data',function(data){
+                          if(data ==='data')
+                                  pyshell.send('go').end(function(err){
+                                          if(err) console.error(err);
+                                  });
+                            if(data=='data2')
+                                  pyshell.send('OK').end(function(err){
+                                                if(err) console.error(err);
+                                  });
+                              console.log(data);
+        });
+			                      return device;
+		                          console.log("Vibration device manager to be called");
+}
