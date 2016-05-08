@@ -2,7 +2,7 @@
 
 module.exports =
 {
-    ProcessDevice: function(device,callback){
+    ProcessDevice: function(device){
         console.log('Device passed to temperature Device Driver' + JSON.stringify(device));
                         // Call vibration device driver
                         device.CurrentStatus='on';

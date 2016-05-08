@@ -3,12 +3,12 @@
 
 module.exports =
 {
-    ProcessDevice: function(device,callback){
+    ProcessDevice: function(device){
         console.log('Device passed to biometriec Device Driver' + JSON.stringify(device));
                         // Call vibration device driver
                         device.CurrentStatus='on';
                         console.log("Vibration device manager to be called");
-                        callback(device);
+                      //  callback(device);
                      return device;
     }
 };
