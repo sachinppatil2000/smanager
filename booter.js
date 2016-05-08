@@ -44,5 +44,5 @@ setInterval(function(){
            reqGet.on('error', function(e) {
            console.error(e);
            });
-         }));
+         });
             } ,60000);
