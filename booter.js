@@ -1,6 +1,7 @@
 // call Get function from Accumulator after every 16 secs
 var accum = require('./Accumulator.js');
 var https = require('https');
+
 setInterval(function(){
         // get data from sensors
         var date = new Date();
@@ -9,7 +10,7 @@ setInterval(function(){
 
       // getCurrent state info
 
-          accum.currentDeviceState(function(Device device){
+          accum.currentDeviceState(function(device){
             jsonObject =JSON.stringify(device)
         console.log('In Booter' + jsonObject );
         var postheaders = {
