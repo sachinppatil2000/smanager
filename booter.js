@@ -5,6 +5,7 @@ setInterval(function(){
         // get data from sensors
         // changes to be commited
         // second change
+        //third commit
         var date = new Date();
         console.log(date.getMinutes());
         // go through list of components and  get current state.
