@@ -29,10 +29,11 @@ module.exports =
 			if(err) throw err;
 			console.log(results);
                       device.CurrentStatus=results[0].status;
+                      return device;
 			});
                   //    callback(device);
     //    });
                         console.log("Vibration device manager to be called");
-                        return device;
+  //                      return device;
     }
 };
