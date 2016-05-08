@@ -7,7 +7,7 @@ module.exports =
                         // Call vibration device driver
                         device.CurrentStatus='on';
                         console.log("Vibration device manager to be called");
-                        callback(device);
-                         return device;
+                        //callback(device);
+                        return device;
     }
 };

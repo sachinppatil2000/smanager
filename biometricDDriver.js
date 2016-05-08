@@ -9,6 +9,6 @@ module.exports =
                         device.CurrentStatus='on';
                         console.log("Vibration device manager to be called");
                         callback(device);
-                         return device;
+                     return device;
     }
 };

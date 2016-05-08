@@ -4,25 +4,25 @@ var biometricDeviceDriver = require('./biometricDDriver.js');
 var temperatureDeviceDriver = require('./temperatureDDriver.js');
 module.exports =
 {
-    CallDevice: function(device,callback){
+    CallDevice: function(device){
         console.log('Device passed to device manager' + JSON.stringify(device));
     // pass the  device Json
     switch(device.DeviceType){
     case 'vibration' :
                         // Call vibration device driver
-                      device=vibrationDeviceDriver.ProcessDevice(device,callback);
+                  device=vibrationDeviceDriver.ProcessDevice(device);
                        // device.CurrentStatus='on';
                         console.log("Vibration device manager to be called");
                        break;
     case 'temperature':
                         // call temperature device driver
-                        device=temperatureDeviceDriver.ProcessDevice(device,callback);
+                  device=temperatureDeviceDriver.ProcessDevice(device);
                              console.log("Temperature device manager to be called");
                         break;
 
     case 'biometric':
                         //Call biometric
-                        device=biometricDeviceDriver.ProcessDevice(device,callback);
+                  device=biometricDeviceDriver.ProcessDevice(device);
                         console.log("biometric device manager to be called");
                         break;
     default :

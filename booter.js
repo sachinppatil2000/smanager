@@ -10,8 +10,8 @@ setInterval(function(){
 
       // getCurrent state info
 
-          accum.currentDeviceState(function(device){
-            jsonObject =JSON.stringify(device)
+      jsonObject =JSON.stringify(accum.currentDeviceState());
+
         console.log('In Booter' + jsonObject );
         var postheaders = {
             'Content-Type' : 'application/json',
@@ -44,5 +44,4 @@ setInterval(function(){
            reqGet.on('error', function(e) {
            console.error(e);
            });
-         });
-            } ,60000);
+         } ,60000);

@@ -10,7 +10,7 @@ var configuration = require('./Devices.json').devices;
 var Location = require('./Location.json');
 //console.log("Configuration loaded: "+ JSON.stringify(configuration));
 module.exports = {
-  currentDeviceState :function(callback){
+  currentDeviceState :function(){
   //  var config = require('./Devices.json').devices;
  var devices = configuration;
 
@@ -19,7 +19,7 @@ module.exports = {
 for(var devicekey in devices) {
 
   console.log("device selected : "+ JSON.stringify (devices[devicekey]));
-       devices[devicekey] = deviceManager.CallDevice(devices[devicekey],callback);
+       devices[devicekey] = deviceManager.CallDevice(devices[devicekey]);
         //configuration.D1.CurrentStatus='off';
      }
       Location.timestamp = (new Date()).getTime();
