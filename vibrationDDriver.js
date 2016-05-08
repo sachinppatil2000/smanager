@@ -7,8 +7,8 @@
 //scriptPath:'/home/pi/Accumulator/drivers/pushsense/vibration',
 //};
 //pythonshell.defaultOptions = {command:'python'};
-var asyncblock = require('asyncblock');
-var exec = require('child_process').exec;
+//var asyncblock = require('asyncblock');
+//var exec = require('child_process').exec;
 
 module.exports =
 {
