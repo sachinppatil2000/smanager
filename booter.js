@@ -3,15 +3,14 @@ var accum = require('./Accumulator.js');
 var https = require('https');
 setInterval(function(){
         // get data from sensors
-        // changes to be commited
-        // second change
-        //third commit
         var date = new Date();
         console.log(date.getMinutes());
         // go through list of components and  get current state.
 
-                // getCurrent state info
-        jsonObject =JSON.stringify(accum.currentDeviceState());
+      // getCurrent state info
+
+          accum.currentDeviceState(function(Device device){
+            jsonObject =JSON.stringify(device)
         console.log('In Booter' + jsonObject );
         var postheaders = {
             'Content-Type' : 'application/json',
@@ -27,27 +26,22 @@ setInterval(function(){
                 method : 'POST',// do GET
                 headers :postheaders
                         }
-
-
             console.info('Options prepared:');
             console.info(optionsPost);
             var reqGet = https.request(optionsPost, function(res) {
                 console.log("statusCode: ", res.statusCode);
-
-                // uncomment it for header details
+            // uncomment it for header details
             //  console.log("headers: ", res.headers);
-
-
                res.on('data', function(d) {
                 console.info('Post result:\n');
                   process.stdout.write(d);
                console.info('\n\nPost completed');
                });
-
             });
-            reqGet.write(jsonObject);
+           reqGet.write(jsonObject);
            reqGet.end();
            reqGet.on('error', function(e) {
            console.error(e);
            });
+         }));
             } ,60000);

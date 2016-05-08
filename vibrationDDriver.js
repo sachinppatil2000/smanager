@@ -9,7 +9,7 @@
 //pythonshell.defaultOptions = {command:'python'};
 module.exports =
 {
-    ProcessDevice: function(device){
+    ProcessDevice: function(device,callback){
         console.log('Device passed to vibration Device Driver' + JSON.stringify(device));
 	var pythonshell = require('python-shell')
 	var options = {
@@ -22,9 +22,10 @@ module.exports =
                         // Call vibration device driver
 			pythonshell.run('vibrationreporter.py',options,function(err,results){
 			if(err) throw err;
-			console.log(results);		
+			console.log(results);
                       device.CurrentStatus=results[0].status;
 			});
+                      callback(device);
                         console.log("Vibration device manager to be called");
                          return device;
     }

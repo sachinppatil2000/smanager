@@ -17,9 +17,8 @@ module.exports = {
  console.log("Configuration loaded: "+ JSON.stringify(configuration) );
 
 for(var devicekey in devices) {
-
   console.log("device selected : "+ JSON.stringify (devices[devicekey]));
-       devices[devicekey] = deviceManager.CallDevice(devices[devicekey]);
+       devices[devicekey] = deviceManager.CallDevice(devices[devicekey],callback);
         //configuration.D1.CurrentStatus='off';
      }
       Location.timestamp = (new Date()).getTime();
