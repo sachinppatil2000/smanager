@@ -1,15 +1,7 @@
 // connect and process request as per configuration for vibration type devices
-//var pythonshell = require('python-shell')
-//var options = {
-//mode : 'json',
-//pythonPath: '/usr/bin/python',
-//pythonOptions:['-u'],
-//scriptPath:'/home/pi/Accumulator/drivers/pushsense/vibration',
-//};
-//pythonshell.defaultOptions = {command:'python'};
-//var asyncblock = require('asyncblock');
 //var exec = require('child_process').exec;
-
+var await = require('await');
+var q = require('q');
 module.exports =
 {
     ProcessDevice: function(device){
@@ -21,22 +13,15 @@ module.exports =
 	pythonOptions:['-u'],
 	scriptPath:'/home/pi/Accumulator/drivers/pushsense/vibration',
 }
+  var d = q.deffer();
 
 	pythonshell.defaultOptions = {command:'python'};
                         // Call vibration device driver
         pyshell=new pythonshell('vibrationreporter.py',options);
-        pyshell.stdout.on('data',function(data){
-                          if(data ==='data')
-                                  pyshell.send('go').end(function(err){
-                                          if(err) console.error(err);
-                                  });
-                            else if(data=='data2')
-                                  pyshell.send('OK').end(function(err){
-                                                if(err) console.error(err);
-                                  });
-                              console.log(data);
-        });
+        function pythonShellCall(functioncall){
+          return q.ninvoke(pythonshell,'run',functioncall);
+        }
         console.log("Vibration device manager to be called");
-   return device;
+   return pythonShellCall('vibrationreporter.py');
    }
 }
