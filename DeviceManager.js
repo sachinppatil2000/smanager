@@ -2,6 +2,7 @@
 var vibrationDeviceDriver = require('./vibrationDDriver.js');
 var biometricDeviceDriver = require('./biometricDDriver.js');
 var temperatureDeviceDriver = require('./temperatureDDriver.js');
+var Q = require('q');
 module.exports =
 {
     CallDevice: function(device){
@@ -11,21 +12,21 @@ module.exports =
     case 'vibration' :
                         // Call vibration device driver
                   promise=vibrationDeviceDriver.ProcessDevice(device);
-                  promise.done(function(data){ device.CurrentStatus=data[0].status});
+                  Q.when(promise).done(function(data){ device.CurrentStatus=data[0].status});
                        // device.CurrentStatus='on';
                         console.log("Vibration device manager to be called");
                        break;
     case 'temperature':
                         // call temperature device driver
                   promise=temperatureDeviceDriver.ProcessDevice(device);
-                    promise.done(function(data){ device.CurrentStatus=data[0].status});
+                  //  promise.done(function(data){ device.CurrentStatus=data[0].status});
                              console.log("Temperature device manager to be called");
                         break;
 
     case 'biometric':
                         //Call biometric
                   promise=biometricDeviceDriver.ProcessDevice(device);
-                    promise.done(function(data){ device.CurrentStatus=data[0].status});
+                  //  promise.done(function(data){ device.CurrentStatus=data[0].status});
                         console.log("biometric device manager to be called");
                         break;
     default :
