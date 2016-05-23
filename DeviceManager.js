@@ -10,19 +10,22 @@ module.exports =
     switch(device.DeviceType){
     case 'vibration' :
                         // Call vibration device driver
-                  device=vibrationDeviceDriver.ProcessDevice(device);
+                  promise=vibrationDeviceDriver.ProcessDevice(device);
+                  promise.done(function(data){ device.CurrentStatus=data[0].status});
                        // device.CurrentStatus='on';
                         console.log("Vibration device manager to be called");
                        break;
     case 'temperature':
                         // call temperature device driver
-                  device=temperatureDeviceDriver.ProcessDevice(device);
+                  promise=temperatureDeviceDriver.ProcessDevice(device);
+                    promise.done(function(data){ device.CurrentStatus=data[0].status});
                              console.log("Temperature device manager to be called");
                         break;
 
     case 'biometric':
                         //Call biometric
-                  device=biometricDeviceDriver.ProcessDevice(device);
+                  promise=biometricDeviceDriver.ProcessDevice(device);
+                    promise.done(function(data){ device.CurrentStatus=data[0].status});
                         console.log("biometric device manager to be called");
                         break;
     default :
@@ -32,6 +35,6 @@ module.exports =
 
     }
     // return the device details
-    return device;
+    return promise;
     }
 };

@@ -4,13 +4,16 @@ var https = require('https');
 
 setInterval(function(){
         // get data from sensors
+
+
+        function sendData(data){
         var date = new Date();
         console.log(date.getMinutes());
         // go through list of components and  get current state.
 
       // getCurrent state info
 
-      jsonObject =JSON.stringify(accum.currentDeviceState());
+      jsonObject =JSON.stringify(data);
 
         console.log('In Booter' + jsonObject );
         var postheaders = {
@@ -44,4 +47,6 @@ setInterval(function(){
            reqGet.on('error', function(e) {
            console.error(e);
            });
+         }
+           accum.currentDeviceState(sendData);
          } ,60000);

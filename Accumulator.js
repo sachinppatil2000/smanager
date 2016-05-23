@@ -8,23 +8,29 @@ var deviceManager = require('./DeviceManager.js');
 
 var configuration = require('./Devices.json').devices;
 var Location = require('./Location.json');
+var Q = require('q');
+
 //console.log("Configuration loaded: "+ JSON.stringify(configuration));
 module.exports = {
-  currentDeviceState :function(){
+  currentDeviceState :function(sendData){
   //  var config = require('./Devices.json').devices;
  var devices = configuration;
-
+ var promises =[];
  console.log("Configuration loaded: "+ JSON.stringify(configuration) );
-
 for(var devicekey in devices) {
 
   console.log("device selected : "+ JSON.stringify (devices[devicekey]));
-       devices[devicekey] = deviceManager.CallDevice(devices[devicekey]);
+      promise.[devicekey] =deviceManager.CallDevice(devices[devicekey])
+    //   Assign(promise.[devicekey],devicekey);
         //configuration.D1.CurrentStatus='off';
      }
-      Location.timestamp = (new Date()).getTime();
-     Location.devices=configuration;
-     return Location;
+      Q.all(promises).then(function(devices){
+
+        Location.timestamp = (new Date()).getTime();
+        Location.devices=devices;
+        sendData(Location);
+     });
+  //   return Location;
     },
    currentLocation : function (){
        Location.devices=configuration;
