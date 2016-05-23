@@ -19,7 +19,7 @@ module.exports =
                         // Call vibration device driver
         pyshell=new pythonshell('vibrationreporter.py',options);
         function pythonShellCall(functioncall){
-          return q.ninvoke(pythonshell,'run',functioncall);
+          return q.ninvoke(pythonshell,'run',functioncall,options);
         }
         console.log("Vibration device manager to be called");
    return pythonShellCall('vibrationreporter.py');
