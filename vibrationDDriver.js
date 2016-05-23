@@ -13,7 +13,7 @@ module.exports =
 	pythonOptions:['-u'],
 	scriptPath:'/home/pi/Accumulator/drivers/pushsense/vibration',
 }
-  var d = q.deffer();
+  //var d = q.deffer();
 
 	pythonshell.defaultOptions = {command:'python'};
                         // Call vibration device driver

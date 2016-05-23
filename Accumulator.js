@@ -20,7 +20,7 @@ module.exports = {
 for(var devicekey in devices) {
 
   console.log("device selected : "+ JSON.stringify (devices[devicekey]));
-      promise.[devicekey] =deviceManager.CallDevice(devices[devicekey])
+      promises[devicekey] =deviceManager.CallDevice(devices[devicekey])
     //   Assign(promise.[devicekey],devicekey);
         //configuration.D1.CurrentStatus='off';
      }
