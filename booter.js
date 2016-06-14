@@ -5,6 +5,13 @@ var https = require('https');
 setInterval(function(){
         // get data from sensors
 
+        convertData(data){
+          var frmData = data;
+          // get message from the file.
+
+          // Take data
+          return frmData;
+        }
 
         function sendData(data){
         var date = new Date();
@@ -13,7 +20,7 @@ setInterval(function(){
 
       // getCurrent state info
 
-      jsonObject =JSON.stringify(data);
+      jsonObject =JSON.stringify(convertData(data));
 
         console.log('In Booter' + jsonObject );
         var postheaders = {
@@ -36,9 +43,9 @@ setInterval(function(){
                 console.log("statusCode: ", res.statusCode);
             // uncomment it for header details
             //  console.log("headers: ", res.headers);
-               res.on('data', function(d) {
+                res.on('data', function(d) {
                 console.info('Post result:\n');
-                  process.stdout.write(d);
+                process.stdout.write(d);
                console.info('\n\nPost completed');
                });
             });
